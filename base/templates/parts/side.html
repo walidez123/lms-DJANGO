@@ -1,0 +1,86 @@
+<aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <span class="brand-text font-weight-light">NOUVIL</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Waleed Shabaan</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item">
+            <a href="{% url 'books'%}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                New Books
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Category
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">            
+                <form id="cat" method="POST">
+                {% csrf_token %}
+                <ul class="list-group">
+                  <li class="list-group-item">{{catform.name}}  </li>
+                </ul>
+                    <button type="submit" class="btn btn-primary p-2 m-2">add new</button>
+               </form>   
+              {% for category in categorys %}
+              <li style="cursor: pointer;" class="nav-item">
+                    <a id="" class="nav-link">
+                      <a class="nav-link bg-primary" href="?category={{ category.id }}">{{ category.name }}</a>
+                    </a>
+                  </li>
+                {% endfor %}
+        
+
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- ... Existing code ... -->
+      
+              <li class="nav-header">Rented Book</li>
+              <li style="cursor: pointer;" class="nav-item">
+                  <a class="nav-link {% if selected_statue == 'sold' %}active{% endif %}" href="?statue=sold">
+                      <i class="nav-icon far fa-circle text-danger"></i>
+                      <p class="text">Sold</p>
+                  </a>
+              </li>
+              <li style="cursor: pointer;" class="nav-item">
+                  <a class="nav-link {% if selected_statue == 'rented' %}active{% endif %}" href="?statue=rented">
+                      <i class="nav-icon far fa-circle text-warning"></i>
+                      <p>Rented</p>
+                  </a>
+              </li>
+              <li style="cursor: pointer;" class="nav-item">
+                  <a class="nav-link {% if selected_statue == 'available' %}active{% endif %}" href="?statue=available">
+                      <i class="nav-icon far fa-circle text-info"></i>
+                      <p>Available</p>
+                  </a>
+              </li>
+          </ul>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

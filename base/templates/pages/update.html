@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+   {% block content %}
+<div style="direction: rtl;" class="wrapper">
+ 
+
+    <!-- Content Wrapper. Contains page content -->
+    <div   class="content-wrapper">
+      <!-- Content Header (Page header) -->
+  <div  class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">تعديل الكتاب</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form method="POST" enctype="multipart/form-data"  > 
+              <div class="card-body"> 
+                {% csrf_token %}
+                <ul class="list-group">
+                  <li class="list-group-item">{{form.title}} اسم الكتاب</li>
+                  <li class="list-group-item">{{form.author}} اسم المؤلف</li>
+                  <li class="list-group-item">{{form.price}} السعر</li>
+                  <li class="list-group-item">{{form.pages}} عدد الصفحات</li>
+                  <li class="list-group-item">{{form.book_pic}} صوره الكتاب</li>
+                  <li class="list-group-item">{{form.author_pic}} صوره المؤلف</li>
+                  <li class="list-group-item">{{form.available}} متاح</li>
+                  <li class="list-group-item">{{form.statue}} حاله الكتاب</li>
+                  <li class="list-group-item">{{form.book_category}} تصنيف الكتاب</li>
+                </ul>
+                <small id='totalrente' class="form-text text-muted"></small>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary" value="update">update</button>
+              </div>
+            </form>
+    </div>
+  </div>
+  </div>
+{% endblock content %} 
